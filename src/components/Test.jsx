@@ -54,8 +54,8 @@ class Test extends Component {
       legend: {
         display: false
       },
-      rotation: Math.PI,
-      circumference:  Math.PI
+      /*rotation: Math.PI,
+      circumference:  Math.PI*/
     }
     
     return {data : data, options : options}
@@ -91,6 +91,9 @@ class Test extends Component {
           <span className="widget__header__count"></span>
         </div>
         <div className="widget__body">
+          <div className="jenkins__test__container">
+            {contentChart}
+          </div>
           {contentChart}
         </div>
       </div>
