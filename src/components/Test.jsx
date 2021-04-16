@@ -90,10 +90,7 @@ class Test extends Component {
           </span>
           <span className="widget__header__count"></span>
         </div>
-        <div className="widget__body">
-          <div className="jenkins__test__container">
-            {contentChart}
-          </div>
+        <div className="widget__body jenkins__test__container">
           {contentChart}
         </div>
       </div>
