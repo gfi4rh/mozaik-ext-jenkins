@@ -3,7 +3,7 @@ import chalk from 'chalk';
 
 const client = mozaik => {
 
-	const apiCalls = {
+	return {
 		
 		build( params ){
 
@@ -24,7 +24,11 @@ const client = mozaik => {
 							mozaik.bus.changeInterval(`jenkins.build.${params.name}`, apisPollInterval);
 					}
 					return json ;
-			});
+			})
+			.error(err => {
+				console.log(err)
+				return {err : err}
+			})
 		},
 
 		test ( params ){
@@ -39,11 +43,14 @@ const client = mozaik => {
 			.then(json => fetch(`${params.url}/job/${params.name}/${json.id}/allure/widgets/summary.json`,{
 				method : 'GET',
 				headers : {'Accept': 'application/json'}
-			})).then(res => res.json())
+			}))
+			.then(res => res.json())
+			.error(err => {
+				console.log(err)
+				return {err : err}
+			})
 		}
 	}
-
-		return apiCalls;
 };
 
 export default client;
