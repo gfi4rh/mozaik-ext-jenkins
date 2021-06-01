@@ -8,7 +8,7 @@ class Test extends Component {
   constructor(props){
     super(props)
     this.state = {
-      stat = null
+      stat : null
     } 
   }
 
