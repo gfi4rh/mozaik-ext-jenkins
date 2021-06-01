@@ -27,7 +27,6 @@ class Test extends Component {
   }
   
   onApiData(data) {
-    console.log(data)
     this.setState({
       stat : data.statistic
     });
@@ -38,18 +37,24 @@ class Test extends Component {
     /*stat.passed, stat.skipped, stat.failed*/
     const { title } = this.props;
     const { stat } = this.state;
+
+
+    let node = null
+
+    if(stat){
+      console.log(stat)
+      node = <div className="jenkins__test__container">
+          <div className="jenkins__test_center jenkins__test__passed" title="Passed" style={{"flex-grow" : stat.passed }}>{stat.passed}</div>
+          <div className="jenkins__test_center jenkins__test__skipped" title="Skipped" style={{"flex-grow" : stat.skipped }}>{stat.skipped}</div>
+          <div className="jenkins__test_center jenkins__test__failed" title="Failed" style={{"flex-grow" : stat.failed }}>{stat.failed}</div>
+        </div>
+    }
   
     
     return (
       <div className="jenkins__test__line">
 				<div className="jenkins__test__name">{title}</div>
-        { stat &&
-          <div className="jenkins__test__container">
-            <div className="jenkins__test_center jenkins__test__passed" title="Passed" style={{"flex-grow" : stat.passed }}>{stat.passed}</div>
-            <div className="jenkins__test_center jenkins__test__skipped" title="Skipped" style={{"flex-grow" : stat.skipped }}>{stat.skipped}</div>
-            <div className="jenkins__test_center jenkins__test__failed" title="Failed" style={{"flex-grow" : stat.failed }}>{stat.failed}</div>
-          </div>
-        }
+        {node}
 			</div>
     );
     }
