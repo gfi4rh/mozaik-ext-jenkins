@@ -46,13 +46,13 @@ class Test extends Component {
 
       let style = {
         passed : {
-          "flex-grow" : stat.passed
+          flexGrow : stat.passed
         },
         skipped : {
-          "flex-grow" : stat.skipped
+          flexGrow : stat.skipped
         },
         failed : {
-          "flex-grow" : stat.failed
+          flexGrow : stat.failed
         }
       }
 
