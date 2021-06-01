@@ -1,14 +1,32 @@
 .jenkins
   &__test
     &__line
-      display : flex
-      margin : 0.5em
-      background-color : #535c68
-      padding-left  : 0.5em
-      padding-right : 0.5em
-      border-radius : 0.2em
+      display flex
+      margin 0.5em
+      background-color #535c68
+      padding-left 0.5em
+      padding-right 0.5em
+      border-radius 0.2em
 
     &__name
-      font-size : 2vmin
-      display : flex
-      align-items : center
+      font-size 2vmin
+      display flex
+      align-items center
+      justify-content center
+
+    &__container
+      flex-grow 1
+      margin 0 0.5em
+      display flex
+      border-radius  1em
+      overflow hidden
+
+    &__passed
+      background-color green
+    
+    &__skipped
+      background-color yellow
+    
+    &__failed
+      background-color red
+
