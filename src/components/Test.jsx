@@ -13,7 +13,7 @@ class Test extends Component {
 
   getApiRequest() {
 
-    const { title, name, url } = this.props;
+    const { name, url } = this.props;
 
     return {
       id:     `jenkins.test.${ name }`,
@@ -34,12 +34,12 @@ class Test extends Component {
   render() {
 
     /*stat.passed, stat.skipped, stat.failed*/
-    const { name } = this.props;
+    const { title } = this.props;
   
     
     return (
       <div className="jenkins__test__line">
-				<div className="jenkins__test__name">{name}</div>
+				<div className="jenkins__test__name">{title}</div>
 			</div>
     );
     }
