@@ -1,8 +1,8 @@
 import Builds from './Builds.jsx';
-import Test from './Test.jsx';
+import Tests from './Tests.jsx';
 
 
 export default {
     Builds,
-    Test
+    Tests
 };

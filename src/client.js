@@ -35,12 +35,12 @@ const client = mozaik => {
 
 			mozaik.logger.info(chalk.yellow(`[jenkins] calling jenkins.test`));
 
-			return fetch(`${params.url}/job/${params.name}/lastBuild/api/json`,{
+			return fetch(`${params.url}/lastBuild/api/json`,{
 				method : 'GET',
 				headers : {'Accept': 'application/json'}
 			})
 			.then(res => res.json())
-			.then(json => fetch(`${params.url}/job/${params.name}/${json.id}/allure/widgets/summary.json`,{
+			.then(json => fetch(`${params.url}/${json.id}/allure/widgets/summary.json`,{
 				method : 'GET',
 				headers : {'Accept': 'application/json'}
 			}))
