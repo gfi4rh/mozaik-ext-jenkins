@@ -45,9 +45,9 @@ class Test extends Component {
 				<div className="jenkins__test__name">{title}</div>
         { stat &&
           <div className="jenkins__test__container">
-            <div className="jenkins__test_center jenkins__test__passed" title="Passed" style={{'flex-grow' : `${stat.passed}`}}>{stat.passed}</div>
-            <div className="jenkins__test_center jenkins__test__skipped" title="Skipped" style={{'flex-grow' : `${stat.skipped}`}}>{stat.skipped}</div>
-            <div className="jenkins__test_center jenkins__test__failed" title="Failed" style={{'flex-grow' : `${stat.failed}`}}>{stat.failed}</div>
+            <div className="jenkins__test_center jenkins__test__passed" title="Passed" style={{"flex-grow" : stat.passed }}>{stat.passed}</div>
+            <div className="jenkins__test_center jenkins__test__skipped" title="Skipped" style={{"flex-grow" : stat.skipped }}>{stat.skipped}</div>
+            <div className="jenkins__test_center jenkins__test__failed" title="Failed" style={{"flex-grow" : stat.failed }}>{stat.failed}</div>
           </div>
         }
 			</div>
