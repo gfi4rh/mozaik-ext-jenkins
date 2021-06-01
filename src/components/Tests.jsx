@@ -13,7 +13,7 @@ class Tests extends Component {
   
   render() {
 
-    const { tests } = this.props
+    const { tests, url } = this.props
     
     return (
       <div>
@@ -23,7 +23,7 @@ class Tests extends Component {
           </span>
         </div>
         <div className="widget__body">
-          {tests.map(e => <Test projet={e.projet} name={e.name} url={e.url}/>)}
+          {tests.map(e => <Test title={e.title} name={e.name} url={url}/>)}
         </div>
       </div>
       );
