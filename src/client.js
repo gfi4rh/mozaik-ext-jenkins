@@ -42,11 +42,7 @@ const client = mozaik => {
 				headers : {'Accept': 'application/json'}
 			})
 			.then(res => res.json())
-			.then(json => {
-				
-				console.log(json)
-				return fetch(`${params.url}/job/${params.name}/${json.id}/allure/widgets/summary.json`,{ method : 'GET', headers : {'Accept': 'application/json'}})
-			})
+			.then(json => fetch(`${params.url}/job/${params.name}/${json.id}/allure/widgets/summary.json`,{ method : 'GET', headers : {'Accept': 'application/json'}}))
 			.then(res => res.json())
 			.error(err => {
 				console.log(err)
