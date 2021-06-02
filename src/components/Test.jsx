@@ -52,7 +52,7 @@ class Test extends Component {
       <div className="jenkins__test__container">
           <div className="jenkins__test__value">
             <div>
-              <span style={{color : "#198452"}}>{stat.passed}</span>
+              <span style={{color : "#00c167"}}>{stat.passed}</span>
               &nbsp;|&nbsp;
               <span style={{color : "#e1b12c"}}>{stat.skipped}</span>
               &nbsp;| &nbsp;
@@ -70,7 +70,7 @@ class Test extends Component {
           </div>
         </div>
     } else {
-      <div className="jenkins__test__container">En cours ...</div>
+      node = <div className="jenkins__test__container">En cours ...</div>
     }
   
     
