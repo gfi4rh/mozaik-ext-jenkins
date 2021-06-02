@@ -45,11 +45,11 @@ class Test extends Component {
       node = 
       <div className="jenkins__test__container">
           <div className="jenkins__test__value">
-            <label style={{color : "#198452"}}>{stat.passed}</label>
-             | 
-            <label style={{color : "#e1b12c"}}>{stat.skipped}</label>
-             | 
-            <label style={{color : "#bd0000"}}>{stat.failed}</label>
+            <span style={{color : "#198452"}}>{stat.passed}</span>
+            &nbsp;|&nbsp;
+            <span style={{color : "#e1b12c"}}>{stat.skipped}</span>
+            &nbsp;| &nbsp;
+            <span style={{color : "#bd0000"}}>{stat.failed}</span>
           </div>
           <div className="jenkins__test__bar">
             <div className="jenkins__test__passed" title="Passed" style={{flexGrow : stat.passed}}></div>
