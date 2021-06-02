@@ -27,6 +27,9 @@ class Test extends Component {
   }
   
   onApiData(data) {
+
+    console.log(data)
+
     this.setState({
       stat : data.statistic
     });
@@ -57,6 +60,8 @@ class Test extends Component {
             <div className="jenkins__test__failed" title="Failed" style={{flexGrow : stat.failed}}></div>
           </div>
         </div>
+    } else {
+      <div className="jenkins__test__container">En cours ...</div>
     }
   
     
