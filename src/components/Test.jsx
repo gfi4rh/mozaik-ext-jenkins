@@ -42,24 +42,10 @@ class Test extends Component {
     let node = null
 
     if(stat){
-      console.log(stat)
-
-      let style = {
-        passed : {
-          flexGrow : stat.passed
-        },
-        skipped : {
-          flexGrow : stat.skipped
-        },
-        failed : {
-          flexGrow : stat.failed
-        }
-      }
-
       node = <div className="jenkins__test__container">
-          <div className="jenkins__test__center jenkins__test__passed" title="Passed" style={style.passed}>{stat.passed}</div>
-          <div className="jenkins__test__center jenkins__test__skipped" title="Skipped" style={style.skipped}>{stat.skipped}</div>
-          <div className="jenkins__test__center jenkins__test__failed" title="Failed" style={style.failed}>{stat.failed}</div>
+          <div className="jenkins__test__center jenkins__test__passed" title="Passed" style={flexGrow : stat.passed}>{stat.passed}</div>
+          <div className="jenkins__test__center jenkins__test__skipped" title="Skipped" style={flexGrow :stat.skipped}>{stat.skipped}</div>
+          <div className="jenkins__test__center jenkins__test__failed" title="Failed" style={flexGrow : stat.failed}>{stat.failed}</div>
         </div>
     }
   
