@@ -9,7 +9,7 @@ class Test extends Component {
   constructor(props){
     super(props)
     this.state = {
-      stat : null
+      stat : null,
       time : null
     } 
   }
@@ -33,7 +33,7 @@ class Test extends Component {
     console.log(data)
 
     this.setState({
-      stat : data.statistic
+      stat : data.statistic,
       time : data.time.stop
     });
   }
