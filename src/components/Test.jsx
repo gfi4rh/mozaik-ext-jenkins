@@ -41,7 +41,7 @@ class Test extends Component {
   render() {
 
     /*stat.passed, stat.skipped, stat.failed*/
-    const { title } = this.props;
+    const { title, url, name } = this.props;
     const { stat, time } = this.state;
 
 
@@ -75,7 +75,7 @@ class Test extends Component {
   
     
     return (
-      <div className="jenkins__test__line">
+      <div className="jenkins__test__line" onClick={e => window.open(`${url}/job/${name}/allure`)}>
 				<div className="jenkins__test__name">{title}</div>
         {node}
 			</div>
