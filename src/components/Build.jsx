@@ -37,7 +37,7 @@ class Build extends Component {
 	
 	render() {
 		
-		const { title } = this.props;
+		const { title, name, url } = this.props;
 		const { build } = this.state;
 		
 		let statusNode = null
@@ -97,7 +97,7 @@ class Build extends Component {
 		}
 		
 		return (
-			<div className="jenkins_build_line">
+			<div className="jenkins_build_line" onClick={e => window.open(`${url}/job/${name}`)}>
 				<div className="jenkins_build_name">{title}</div>
 				{number}
 				{statusNode}
