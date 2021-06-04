@@ -59,7 +59,7 @@ class Test extends Component {
               <span style={{color : "#bd0000"}}>{stat.failed}</span>
             </div>
             <div>
-              {`Exécuté le ${moment(time).format("DD/MM/YYYY [à] HH:mm")}`}
+              {`Executé le ${moment(time).format("DD/MM/YYYY [à] HH:mm")}`}
             </div>
 
           </div>
