@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
+import Build                           from './Build.jsx';
 
 
 class Builds extends Component {
@@ -11,18 +12,18 @@ class Builds extends Component {
     }
 
     render() {
+
+        const { jobs, url } = this.props;
+
         return (
             <div>
                 <div className="widget__header">
                     <span>
                         <span className="widget__header__subject">{this.props.title}</span>
                     </span>
-                    <span className="widget__header__count">
-                    </span>
-                    <i className="fa fa-running" />
                 </div>
                 <div className="widget__body">
-                    Hello from builds component
+                    {jobs.map(e => <Build name={e.name} url={url} title={e.title}/>)}
                 </div>
             </div>
         );

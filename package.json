@@ -1,7 +1,7 @@
 {
   "author": {
-    "name": "Colin Regourd",
-    "url": "https://github.com/colin27091"
+    "name": "gfi4rh",
+    "url": "https://github.com/gfi4rh"
   },
   "ava": {
     "files": [
@@ -29,14 +29,14 @@
     "chalk": "^4.1.0",
     "classnames": "2.2.3",
     "d3": "3.5.16",
-    "moment": "2.12.0",
+    "moment": "^2.12.0",
     "moment-timezone": "0.5.3",
     "node-fetch": "^2.6.1",
     "react-mixin": "3.0.4",
     "reflux": "^0.4.1"
   },
   "deprecated": true,
-  "description": "Mozaik pattern widgets",
+  "description": "Mozaik jenkins widgets",
   "devDependencies": {
     "ava": "0.13.0",
     "babel-eslint": "^5.0.0",
@@ -52,12 +52,12 @@
     "node": "14.15.x",
     "npm": ">=6.0.0"
   },
-  "homepage": "https://github.com/colin27091/mozaik-ext-pattern",
+  "homepage": "https://github.com/gfi4rh/mozaik-ext-jenkins",
   "keywords": [
-    "time",
-    "mozaik",
-    "clock",
-    "timezone",
+    "jenkins",
+    "job",
+    "build",
+    "test",
     "widget",
     "extension",
     "dashboard"
@@ -76,7 +76,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/plouc/mozaik-ext-jenkins.git"
+    "url": "git://github.com/gfi4rh/mozaik-ext-jenkins.git"
   },
   "scripts": {
     "cover-report": "nyc report --reporter=lcov && open coverage/lcov-report/index.html",
