@@ -110,7 +110,7 @@ class Build extends Component {
 				{!error && number}
 				{!error && statusNode}
 				{!error && time}
-				{error}
+				{error && <div className="jenkins_build_error">{error}</div>}
 			</div>
 			);
 		}
