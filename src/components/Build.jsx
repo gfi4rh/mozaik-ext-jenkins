@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
 import Mozaik                          from 'mozaik/browser';
 import { ListenerMixin }               from 'reflux';
 import reactMixin                      from 'react-mixin';
@@ -12,7 +12,8 @@ class Build extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			build : null
+			build : null,
+			error : null
 		}  
 	}
 	
@@ -29,16 +30,23 @@ class Build extends Component {
 	}
 	
 	onApiData(build) {
-		this.setState({
-			build : build
-		});
+
+		if('message' in build){
+			this.setState({
+				error : "Job introuvable"
+			})
+		} else {
+			this.setState({
+				build : build
+			});
+		}
 	}
 	
 	
 	render() {
 		
 		const { title, name, url } = this.props;
-		const { build } = this.state;
+		const { build, error } = this.state;
 		
 		let statusNode = null
 		let time = null
@@ -99,9 +107,10 @@ class Build extends Component {
 		return (
 			<div className="jenkins_build_line" onClick={e => window.open(`${url}/job/${name}`)}>
 				<div className="jenkins_build_name">{title}</div>
-				{number}
-				{statusNode}
-				{time}
+				{!error && number}
+				{!error && statusNode}
+				{!error && time}
+				{error}
 			</div>
 			);
 		}
