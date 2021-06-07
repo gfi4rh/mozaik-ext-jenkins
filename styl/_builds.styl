@@ -1,0 +1,64 @@
+.jenkins
+  &_build
+    &_line
+      display : flex
+      margin : 0.5em
+      background-color : #535c68
+      padding-left  : 0.5em
+      padding-right : 0.5em
+      border-radius : 0.2em
+
+    &_line:hover
+      cursor pointer
+      background-color: #4e5762;
+    
+    &_line:active
+      box-shadow 0 0.1em 0 rgba(0,0,0,0.4) inset
+
+    
+    &_progress
+      margin : auto
+      flex-grow : 1
+      display flex
+      flex-direction column
+      margin-top: initial;
+
+
+    &_time_progress
+      align-self: end;
+      margin-right: 5%;
+      
+
+    &_box
+      margin : 0.5em
+      border-radius : 0.4em
+      text-align : center
+      font-size : 1.5vmin
+      padding : 0 0.5em
+      box-shadow: 0 1px 0 rgba(0,0,0,0.4) inset
+    
+    &_status
+      color : beige
+
+
+    &_number
+      color : #7e9ebc
+      background-color : #1e2836
+
+    &_time
+      display : flex
+      align-items : center
+      margin-left : auto
+      font-size : 1.8vmin
+
+    &_name
+      font-size : 2vmin
+      display : flex
+      align-items : center
+
+    &_error
+      flex-grow 2
+      display flex
+      justify-content center
+      align-items center
+      height 3em

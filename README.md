@@ -1,59 +1,69 @@
-# Mozaïk time widgets
+# Mozaïk Jenkins widgets
 
-[![License][license-image]][license-url]
-[![Travis CI][travis-image]][travis-url]
-[![NPM version][npm-image]][npm-url]
-[![Dependencies][gemnasium-image]][gemnasium-url]
-[![Coverage Status][coverage-image]][coverage-url]
-![widget count][widget-count-image]
+## Jenkins — Builds
 
-## Time — Clock
-
-> Show analog clock from local or another timezone.
-
-![clock](https://raw.githubusercontent.com/plouc/mozaik-ext-time/master/preview/time.clock.png)
+> Montre l'état de plusieurs build donnée sous la forme de liste
 
 ### parameters
 
 key        | required | description
 -----------|----------|----------------------------------------------------
-`title`    | no       | *Title of the widget*
-`timezone` | no       | *Name of the timezone, like `America/Los_Angeles`. See http://momentjs.com/timezone/ for possible values. Defaults to local time.*
-`info`     | no       | *Free textual value to show within clock. Special values are: `timezone`, `date`, `time`.*
-`sunRise`  | no       | *Local time when sun rises (used for day/night indicator). Defaults to `6:00`.*
-`sunSet`   | no       | *Local time when sun sets (used for day/night indicator). Defaults to `18:00`.*
+`title`    | yes      | *Titre du widget*
+`url`      | yes      | *URL de l'hôte jenkins*
+`jobs`     | yes      | *Liste de jobs sour la forme d'un tableau d'objet, contenant le nom du job et un titre*
 
 ### usage
 
 ```javascript
-{
-  type: 'time.clock',
-  info: 'date',
-  columns: 1, rows: 1, x: 0, y: 0
-},
-{
-  type: 'time.clock',
-  timezone: 'America/Los_Angeles',
-  info: 'timezone',
-  sunRise: '6:30',
-  sunSet: '17:43',
-  columns: 1, rows: 1, x: 1, y: 0
-},
-{
-  type: 'time.clock',
-  info: 'Time is money!',
-  columns: 1, rows: 1, x: 2, y: 0
-}
+  {
+    type: 'jenkins.builds',
+    title : "Jobs Jenkins",
+    url : "http://domain.com/jenkins",
+    jobs : [{
+      name : "devfab",
+      title : "DEVFAB"
+      },{
+          name : "pprfab",
+          title : "PPRFAB"
+      },{
+          name : "prdfab",
+          title : "PRDFAB"
+      }],
+    columns: 2, rows: 1,
+    x: 3, y: 0
+  }
 ```
 
-[license-image]: https://img.shields.io/github/license/plouc/mozaik-ext-time.svg?style=flat-square
-[license-url]: https://github.com/plouc/mozaik-ext-time/blob/master/LICENSE.md
-[travis-image]: https://img.shields.io/travis/plouc/mozaik-ext-time.svg?style=flat-square
-[travis-url]: https://travis-ci.org/plouc/mozaik-ext-time
-[npm-image]: https://img.shields.io/npm/v/mozaik-ext-time.svg?style=flat-square
-[npm-url]: https://www.npmjs.com/package/mozaik-ext-time
-[gemnasium-image]: https://img.shields.io/gemnasium/plouc/mozaik-ext-time.svg?style=flat-square
-[gemnasium-url]: https://gemnasium.com/plouc/mozaik-ext-time
-[coverage-image]: https://img.shields.io/coveralls/plouc/mozaik-ext-time.svg?style=flat-square
-[coverage-url]: https://coveralls.io/github/plouc/mozaik-ext-time
-[widget-count-image]: https://img.shields.io/badge/widgets-x1-green.svg?style=flat-square
+## Jenkins — Tests
+
+> Montre l'état de plusieurs tests donnée sous la forme de liste
+
+### parameters
+
+key        | required | description
+-----------|----------|----------------------------------------------------
+`title`    | yes      | *Titre du widget*
+`url`      | yes      | *URL de l'hôte jenkins*
+`tests`     | yes      | *Liste de jobs de test sour la forme d'un tableau d'objet, contenant le nom du job et un titre*
+
+### usage
+
+```javascript
+  {
+    type: 'jenkins.tests',
+    title : "Test",
+    url : "http://domain.com/jenkins",
+    tests : [{
+      name : "protractor-devint",
+      title : "DEVINT"
+    }, {
+      name :"protractor-pprint",
+      title : "PPRINT"
+    }, {
+      name : "protractor-prdint",
+      title : "PRDINT"
+    }],
+    columns: 2, rows: 1,
+    x: 3, y: 0
+  }
+```
