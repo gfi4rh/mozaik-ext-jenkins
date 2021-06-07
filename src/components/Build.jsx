@@ -31,7 +31,7 @@ class Build extends Component {
 	
 	onApiData(build) {
 
-		if('message' in build){
+		if('message' in build){//si le retour contient un message alors il s'agit d'une erreur
 			this.setState({
 				error : "Job introuvable"
 			})
@@ -56,12 +56,12 @@ class Build extends Component {
 			
 			moment.locale('fr')
 			
-			if(!build.building){
+			if(!build.building){//si le job est en cour de build
 				
 				let backgroundColor = null;
 				let status = null
 				
-				switch(build.result){
+				switch(build.result){//calcul du resultat
 					case "SUCCESS" : 
 						backgroundColor = '#198452'
 						status = 'SUCCESS'
@@ -81,13 +81,13 @@ class Build extends Component {
 				}
 				
 				
-				let timeAgo = moment(build.timestamp).fromNow();
-				let duration = moment.utc(build.duration).format("HH:mm:ss");
+				let timeAgo = moment(build.timestamp).fromNow();//il ya combien de temps
+				let duration = moment.utc(build.duration).format("HH:mm:ss");//durée du build
 				
 				statusNode = <div className="jenkins_build_box jenkins_build_status" style={{backgroundColor : backgroundColor}}>{status}</div>
 				time = <div className="jenkins_build_time">{`${timeAgo} | Durée : ${duration}`}</div>
 				
-			} else {
+			} else {//si en cour de build mise en place d'une progress bar de temps
 				
 				let diff = moment().diff(build.timestamp)
 				let chrono = moment.utc(diff).format("HH:mm:ss")

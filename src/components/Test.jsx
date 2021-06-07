@@ -10,7 +10,8 @@ class Test extends Component {
     super(props)
     this.state = {
       stat : null,
-      time : null
+      time : null,
+      error : null
     } 
   }
 
@@ -32,17 +33,23 @@ class Test extends Component {
 
     console.log(data)
 
-    this.setState({
-      stat : data.statistic,
-      time : data.time.stop
-    });
+    if('message' in data){
+      this.setState({
+        error : "Job de test introuvable"
+      })
+    } else {
+      this.setState({
+        stat : data.statistic,
+        time : data.time.stop
+      });
+    }
   }
   
   render() {
 
     /*stat.passed, stat.skipped, stat.failed*/
     const { title, url, name } = this.props;
-    const { stat, time } = this.state;
+    const { stat, time, error } = this.state;
 
 
     let node = null
@@ -70,7 +77,11 @@ class Test extends Component {
           </div>
         </div>
     } else {
-      node = <div className="jenkins__test__container">En cours ...</div>
+      if(error){
+        node = <div className="jenkins__test__container">{error}</div>
+      } else {
+        node = <div className="jenkins__test__container">En cours ...</div>
+      }
     }
   
     
