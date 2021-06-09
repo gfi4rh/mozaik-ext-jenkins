@@ -31,17 +31,20 @@ class Test extends Component {
   
   onApiData(data) {
 
-    console.log(data)
-
     if('message' in data){
       this.setState({
         error : "Job de test introuvable"
       })
     } else {
-      this.setState({
-        stat : data.statistic,
-        time : data.time.stop
-      });
+      if('error' in data){
+        this.setState(data)
+      } else {
+        this.setState({
+          stat : data.statistic,
+          time : data.time.stop
+        })
+      }
+      
     }
   }
   
