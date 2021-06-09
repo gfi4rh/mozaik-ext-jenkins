@@ -35,19 +35,24 @@ const client = mozaik => {
 
 			mozaik.logger.info(chalk.yellow(`[jenkins] calling jenkins.test`));
 
-			let data = {}
-
 			return fetch(`${params.url}/job/${params.name}/lastBuild/api/json`,{
 				method : 'GET',
 				headers : {'Accept': 'application/json'}
 			})
 			.then(res => res.json())
-			.then(json => fetch(`${params.url}/job/${params.name}/${json.id}/allure/widgets/summary.json`,{ method : 'GET', headers : {'Accept': 'application/json'}}))
-			.then(res => res.json())
-			.error(err => {
-				console.log(err)
-				return {err : err}
-			})
+			.then(json =>{ 
+				if(json.building){
+					return {error : "En cours ..."}
+				} else {
+					if(json.result === "FAILURE"){
+						return {error : "Le build du test a échoué"}
+					} else {
+						return fetch(`${params.url}/job/${params.name}/${json.id}/allure/widgets/summary.json`,{ method : 'GET', headers : {'Accept': 'application/json'}})
+						.then(res => res.json())
+						.catch(err => err)
+					}
+				}})
+			.catch(err => err)
 		}
 	}
 };
