@@ -25,10 +25,7 @@ const client = mozaik => {
 					}
 					return json ;
 			})
-			.error(err => {
-				console.log(err)
-				return {err : err}
-			})
+			.catch(err => err)
 		},
 
 		test ( params ){
