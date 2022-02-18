@@ -13,8 +13,12 @@ class Build extends Component {
 		super(props);
 		this.state = {
 			build : null,
-			error : null
+			error : null,
+			interval : null,
+			timeRun : null
 		}  
+
+		
 	}
 	
 	getApiRequest() {
@@ -31,6 +35,8 @@ class Build extends Component {
 	
 	onApiData(build) {
 
+		let { interval } = this.state;
+
 		if('message' in build){//si le retour contient un message alors il s'agit d'une erreur
 			this.setState({
 				error : "Job introuvable"
@@ -39,6 +45,31 @@ class Build extends Component {
 			this.setState({
 				build : build
 			});
+
+			if(build.building){
+				if(!interval){
+					this.setState({
+						interval : setInterval(() => {
+							this.setState({
+								timeRun : moment().diff(build.timestamp)
+							});
+						}, 1000)
+					});
+				}
+			} else {
+				if(interval){
+					clearInterval(interval);
+
+					this.setState({
+						interval : null
+					});
+
+					this.setState({
+						timeRun : null
+					});
+				}
+			}
+
 		}
 	}
 	
@@ -46,7 +77,7 @@ class Build extends Component {
 	render() {
 		
 		const { title, name, url } = this.props;
-		const { build, error } = this.state;
+		const { build, error, timeRun } = this.state;
 		
 		let statusNode = null
 		let time = null
@@ -54,9 +85,9 @@ class Build extends Component {
 		
 		if(build){
 			
-			moment.locale('fr')
+			moment.locale('fr');
 			
-			if(!build.building){//si le job est en cour de build
+			if(!build.building){//si le job n'est pas en cours de build
 				
 				let backgroundColor = null;
 				let status = null
@@ -80,18 +111,16 @@ class Build extends Component {
 					break;
 				}
 				
-				
 				let timeAgo = moment(build.timestamp).fromNow();//il ya combien de temps
 				let duration = moment.utc(build.duration).format("HH:mm:ss");//durée du build
 				
 				statusNode = <div className="jenkins_build_box jenkins_build_status" style={{backgroundColor : backgroundColor}}>{status}</div>
 				time = <div className="jenkins_build_time">{`${timeAgo} | Durée : ${duration}`}</div>
 				
-			} else {//si en cour de build mise en place d'une progress bar de temps
-				
-				let diff = moment().diff(build.timestamp)
-				let chrono = moment.utc(diff).format("HH:mm:ss")
-				let completed = diff*100/build.estimatedDuration
+			} else {//si en cours de build mise en place d'une progress bar de temps
+
+				let chrono = moment.utc(timeRun).format("HH:mm:ss");
+				let completed = timeRun*100/build.estimatedDuration;
 				
 				time = 
 				<div className="jenkins_build_progress">

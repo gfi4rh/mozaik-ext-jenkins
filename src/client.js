@@ -17,11 +17,11 @@ const client = mozaik => {
 			})
 			.then(res => res.json())
 			.then(json => { 
-					if(json.building){//si en cour de build alors intervale reduit à 5 secondes
+					if(json.building){//si en cours de build alors intervale reduit à 5 secondes
 							mozaik.bus.changeInterval(`jenkins.build.${params.name}`, 5000);
 					} else {
 							const { apisPollInterval } = mozaik.config;
-							mozaik.bus.changeInterval(`jenkins.build.${params.name}`, apisPollInterval);//si pas en cour de build intervale restoré à apisPollInterval
+							mozaik.bus.changeInterval(`jenkins.build.${params.name}`, apisPollInterval);//si pas en cours de build intervale restoré à apisPollInterval
 					}
 					return json ;
 			})

@@ -85,5 +85,5 @@
     "test": "ava",
     "test-cover": "nyc ava"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
